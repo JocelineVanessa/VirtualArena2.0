@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualArena - Sobre Nosotros</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: rgb(20,26,47); /* Fondo azul */
+      color: rgb(250,248,248); /* Texto blanco */
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgb(250,248,248);
+      border-bottom: 1px solid rgb(12, 15, 54); /* Borde inferior azul */
+      color: rgb(109,109,109);
+      padding: 0.3%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      width: 20%;
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+    }
+
+    .nav-buttons button {
+      padding: 6%;
+      background-color: rgb(244, 118, 7);
+      border: none;
+      color:rgb(0,0,0);
+      cursor: pointer;
+      border-radius: 20px; /* Bordes redondeados */
+    }
+
+    .dropdown {
+      display: none; /* Ocultar el menú desplegable por defecto */
+      position: relative;
+      margin-right: 1%; /* Espacio entre elementos */
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgb(155,155,155);
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: rgb(250,248,248);
+      padding: 4%;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .menu-icon {
+      display: none; /* Ocultar el icono de menú por defecto */
+      cursor: pointer;
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: rgb(12, 15, 54);
+      margin-bottom: 5px;
+    }
+
+    .nav-items {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-items * {
+      margin-right: 9%;/* Espacio entre elementos */
+      display: inline-block; /* Alinear horizontalmente */
+      font-size: 16px; /* Tamaño de fuente para todos los elementos h */
+      color: rgb(109, 109, 109);
+      cursor: pointer; /* Cambiado para mostrar el cursor al pasar sobre los elementos */
+    }
+
+    .content {
+      margin-top: 5%; /* Margen superior para separar del encabezado */
+      display: flex;
+    }
+
+    .left-content {
+      width: 50%; /* 50% de la pantalla */
+      padding: 4%;
+    }
+
+    .left-content img {
+      width: 100%;
+      height: auto; /* Se ajustará automáticamente para mantener la proporción */
+    }
+
+    .right-content {
+      width: 50%; /* 50% de la pantalla */
+      padding: 4%;
+      text-align: justify; /* Justificar el texto */
+    }
+
+    .right-content .title {
+      font-family: 'League Spartan', sans-serif; /* Fuente League Spartan */
+      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .right-content p {
+      font-family: 'Raleway Semi-Bold', sans-serif; /* Fuente Raleway Semi-Bold */
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      background-color: rgb(250,248,248);
+      color: rgb(109, 109, 109);
+      border-top: 1px solid rgb(12, 15, 54); /* Borde superior azul */
+      text-align: center; /* Alinear texto al centro */
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px; /* Espaciado interno */
+      height: 10%;
+      width: 100%;
+      margin-right: 20%;
+    }
+
+    .footer img {
+      max-width: 10%; /* Ancho máximo del logo */
+      height: auto; /* Altura automática */
+      display: flex;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="nav-items">
+    <img src="https://i.imgur.com/tBQu4dR.jpeg" alt="Logo" class="logo">
+    <div class="nav-buttons">
+      <button onclick="subscribe()">Subscribirse</button> <!-- Agregado onclick para la acción del botón -->
+    </div>
+
+    <h1 onclick="navigateTo('mobile')">Movil</h1>
+    <h2 onclick="navigateTo('console')">Consola</h2>
+    <h3 onclick="navigateTo('contact')">Contacto</h3>
+    <h4 onclick="navigateTo('about')">Sobre Nosotros</h4>
+
+    <img src="https://i.imgur.com/gwLIsiX.png" alt="Search" style="width: 5vh; height: 5vh;"> <!-- Icono de búsqueda -->
+    <img src="https://i.imgur.com/vlwG8W3.png" alt="User" style="width: 5vh; height: 5vh;"> <!-- Icono de usuario -->
+
+    <div class="dropdown" id="dropdown-menu">
+      <div class="dropdown-content">
+        <a href="#" onclick="navigateTo('home')">Home</a>
+        <a href="#" onclick="navigateTo('subscribe')">Subscribirse</a>
+        <a href="#" onclick="navigateTo('mobile')">Móvil</a>
+        <a href="#" onclick="navigateTo('console')">Consola</a>
+        <a href="#" onclick="navigateTo('about')">Sobre Nosotros</a>
+        <a href="#" onclick="navigateTo('contact')">Contacto</a>
+      </div>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="left-content">
+    <img src="https://i.imgur.com/gsjRKu6.png" alt="Logo">
+  </div>
+  <div class="right-content">
+    <p class="title">Sobre Nosotros</p>
+    <p style="text-align: justify; font-family: 'League Spartan', sans-serif; font-weight: bold;">En el vibrante universo del gaming en Latinoamérica, "Virtual Arena" se erige como un faro de entusiasmo y conocimiento.</p>
+    <p>Somos más que un magazine online, somos el punto de encuentro para todos aquellos apasionados por los videojuegos en la región. Especializados en los cinco títulos más destacados para consolas y dispositivos móviles, nuestro equipo se dedica a proporcionarte una experiencia inmersiva y completa.</p>
+    <p>Desde análisis exhaustivos que desentrañan cada detalle de los juegos hasta entrevistas exclusivas con desarrolladores y jugadores profesionales, estamos comprometidos en brindarte contenido de calidad que alimente tu pasión por el gaming.</p>
+    <p>Pero "Virtual Arena" no se limita solo a informar, también creamos comunidad, organizando eventos, torneos y espacios de interacción donde los gamers pueden conectar, competir y compartir su amor por esta forma de entretenimiento. Únete a nosotros en esta emocionante aventura donde los límites los establece tu imaginación y la diversión nunca tiene fin.</p>
+    <p>¡Bienvenido a "Virtual Arena", tu destino definitivo para todo lo relacionado con el gaming en Latinoamérica!</p>
+  </div>
+</div>
+
+<div class="footer">
+  <img src="https://i.imgur.com/tBQu4dR.jpeg" alt="Logo">
+  <p>2024 Virtual Arena - Todos los derechos reservados</p>
+</div>
+
+<script>
+  function toggleMenu() {
+    var menu = document.getElementById('dropdown-menu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  }
+
+  function subscribe() {
+    alert('¡Te has suscrito!');
+  }
+
+  function navigateTo(section) {
+    alert('Navegando a ' + section);
+  }
+</script>
+
+</body>
+</html>
+
+

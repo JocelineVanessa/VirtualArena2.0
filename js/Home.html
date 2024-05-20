@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualArena - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgb(250,248,248);
+      border-bottom: 1px solid rgb(12, 15, 54); /* Borde inferior azul */
+      color: rgb(109,109,109);
+      padding: 0.3%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      width: 20%;
+    }
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+    }
+
+    .nav-buttons button {
+      padding: 6%;
+      background-color: rgb(244, 118, 7);
+      border: none;
+      color:rgb(0,0,0);
+      cursor: pointer;
+      border-radius: 20px; /* Bordes redondeados */
+    }
+
+    .dropdown {
+      display: none; /* Ocultar el menú desplegable por defecto */
+      position: relative;
+      margin-right: 1%; /* Espacio entre elementos */
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgb(155,155,155);
+      min-width: 160px;
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: rgb(250,248,248);
+      padding: 4%;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .menu-icon {
+      display: none; /* Ocultar el icono de menú por defecto */
+      cursor: pointer;
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: rgb(12, 15, 54);
+      margin-bottom: 5px;
+    }
+
+    .nav-items {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-items * {
+      margin-right: 9%;/* Espacio entre elementos */
+      display: inline-block; /* Alinear horizontalmente */
+      font-size: 16px; /* Tamaño de fuente para todos los elementos h */
+      color: rgb(109, 109, 109);
+      cursor: pointer; /* Cambiado para mostrar el cursor al pasar sobre los elementos */
+    }
+
+    .content {
+      margin-top: 5%; /* Margen superior para separar del encabezado */
+      display: flex;
+    }
+
+    .left-content {
+      width: 55%; /* 60% de la pantalla menos el margen derecho */
+      padding: 4%;
+      margin-right: 4%; /* Añadir margen derecho para separar texto de la imagen */
+    }
+    .left-content .image-container {
+      margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+    }
+
+    .left-content img {
+      width: 100%;
+      height: auto; /* Se ajustará automáticamente para mantener la proporción */
+    }
+
+    .right-content {
+      width: 45%; /* 40% de la pantalla */
+      padding: 4%;
+      text-align: justify; /* Justificar el texto */
+    }
+    .right-content .title {
+      font-size:20px;font-weight: bold;
+      margin-bottom:5%;
+      margin-top: 1%;
+    }
+    .popular-items {
+      display: flex;
+      flex-direction: column; /* Para que los elementos aparezcan verticalmente */
+    }
+    .popular-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .popular-item .image-container {
+      width: 90px; /* Ancho para las imágenes */
+      height: 90px; /* Altura  para las imágenes */
+      overflow: hidden; /* Oculta cualquier parte de la imagen que exceda el contenedor */
+      margin-right: 20px; /* Espacio entre la imagen y el texto */
+    }
+
+    .popular-item .image-container img {
+      width: 100%;
+      height: auto; /* Se ajustará automáticamente para mantener la proporción */
+    }
+    .text-content p {
+      margin-bottom: 5px;
+      font-family: 'Raleway Semi-Bold', sans-serif; /* Fuente Raleway Semi-Bold */ font-size: 12px; margin-left: 4%;
+    }
+    .text-content p:first-of-type {
+      font-family: 'League Spartan', sans-serif; /* Fuente League Spartan */
+      font-weight: bold; font-size: 14px; margin-left: 4%;
+    }
+
+    .additional-content {
+      width: 100%;
+      margin-top: 0%; /* Mismo margen superior que los contenedores superiores */
+      background-color: rgb(250,248,248);
+      padding: 4%;
+      box-sizing: border-box; /* Incluir el padding en el ancho total */
+    }
+    .footer {
+      background-color: rgb(250,248,248);
+      color: rgb(109, 109, 109);
+      border-top: 1px solid rgb(12, 15, 54); /* Borde superior azul */
+      text-align: center; /* Alinear texto al centro */
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px; /* Espaciado interno */
+      height: 10%;
+      width: 100%;
+      margin-right: 20%;
+    }
+    .footer img {
+      max-width: 10%; /* Ancho máximo del logo */
+      height: auto; /* Altura automática */
+      display: flex;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="nav-items">
+    <img src="https://i.imgur.com/tBQu4dR.jpeg" alt="Logo" class="logo">
+    <div class="nav-buttons">
+      <button onclick="subscribe()">Subscribirse</button> <!-- Agregado onclick para la acción del botón -->
+    </div>
+
+    <h1 onclick="navigateTo('mobile')">Movil</h1>
+    <h2 onclick="navigateTo('console')">Consola</h2>
+    <h3 onclick="navigateTo('contact')">Contacto</h3>
+    <h4 onclick="navigateTo('about')">Sobre Nosotros</h4>
+
+    <img src="https://i.imgur.com/gwLIsiX.png" alt="Search" style="width: 5vh; height: 5vh;"> <!-- Icono de búsqueda -->
+    <img src="https://i.imgur.com/vlwG8W3.png" alt="User" style="width: 5vh; height: 5vh;"> <!-- Icono de usuario -->
+
+    <div class="dropdown" id="dropdown-menu">
+      <div class="dropdown-content">
+        <a href="#" onclick="navigateTo('home')">Home</a>
+        <a href="#" onclick="navigateTo('subscribe')">Subscribirse</a>
+        <a href="#" onclick="navigateTo('mobile')">Móvil</a>
+        <a href="#" onclick="navigateTo('console')">Consola</a>
+        <a href="#" onclick="navigateTo('about')">Sobre Nosotros</a>
+        <a href="#" onclick="navigateTo('contact')">Contacto</a>
+      </div>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="left-content">
+    <img src="https://i.imgur.com/fsTeFWq.jpeg" alt="FIFA 2024">
+    <p>FIFA 2024: Novedades</p>
+    <p>Todas las novedades del nuevo FIFA en exclusiva.</p>
+  </div>
+  <div class="right-content">
+    <p class="title">Popular</p>
+    <div class="popular-items">
+      <div class="popular-item">
+        <img src="https://i.imgur.com/GheVGGd.jpeg" alt="Fornite-Starwars">
+        <div class="text-content">
+          <p>Fornite anuncia colaboración con Starwars.</p>
+          <p>Epic Games ha dado a conocer cuándo volveremos a tener novedades de la franquicia de Disney dentro del battle royale.</p>
+          <p>By Joceline Ramirez 15-04-2024</p>
+        </div>
+      </div>
+      <div class="popular-item">
+        <img src="https://i.imgur.com/p3RLOhY.jpeg" alt="Play 6">
+        <div class="text-content">
+          <p>Todo lo que se sabe del Play 6.</p>
+          <p>Fecha de salida, modelos, precios y todo lo que creemos saber sobre ella.</p>
+          <p>By Joceline Ramirez 15-04-2024</p>
+        </div>
+      </div>
+      <div class="popular-item">
+        <img src="https://i.imgur.com/ChY9zyS.jpeg" alt="Hectorino">
+        <div class="text-content">
+          <p>Entrevista exclusiva con Hectorino.</p>
+          <p>Te has preguntado cómo es un día en la vida del gamer profesional Hectorino? ¿0 cómo conocio al famoso Ronaldinho?¡Aqui te contamos todo en exclusiva!</p>
+          <p>By Martín García 05-04-2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="additional-content">
+  <p style="font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 20px; color: rgb(12, 15, 54);">Reciente</p>
+  <p style="font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 16px; color: rgb(12, 15, 54);">Torneos en curso de League of Legends</p>
+  <img src="https://i.imgur.com/RUbyUov.jpeg" alt="Torneos en curso de League of Legends" style="width: 100%; height: 20%;">
+</div>
+
+<div class="footer">
+  <img src="https://i.imgur.com/tBQu4dR.jpeg" alt="Logo">
+  <p>2024 Virtual Arena - Todos los derechos reservados</p>
+</div>
+<script>
+  function toggleMenu() {
+    var menu = document.getElementById('dropdown-menu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  }
+
+  function subscribe() {
+    alert('¡Te has suscrito!');
+
+  }
+  function navigateTo(section) {
+    alert('Navegando a ' + section);
+  }
+</script>
+
+</body>
+</html>
